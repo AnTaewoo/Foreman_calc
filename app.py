@@ -21,6 +21,8 @@ def calc():
     elif operation == 'multiply':
         result = multiply(x, y)
     elif operation == 'divide':
+        if y == 0:
+            return jsonify({"error": "Division by zero"}), 400
         result = divide(x, y)
     else:
         return jsonify({"error": "Invalid operation"}), 400
