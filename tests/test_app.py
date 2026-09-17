@@ -4,7 +4,6 @@ from app import app as foreman_app
 
 @pytest.fixture
 def client():
-    # Set up the Flask test client
     with foreman_app.test_client() as client:
         yield client
 
@@ -36,3 +35,4 @@ def test_calc_route_divide_by_zero(client):
     response = client.get('/calc?op=divide&x=5&y=0')
     assert response.status_code == 400
     assert response.json == {'error': 'Division by zero'}
+
