@@ -1,4 +1,5 @@
 import pytest
+from flask import Flask
 from app import app as foreman_app
 
 @pytest.fixture
@@ -13,4 +14,5 @@ def test_app_initialization():
 
 def test_route_hello_not_implemented_yet(client):
     response = client.get('/hello')
-    assert response.status_code == 404
+    assert response.status_code == 200
+    assert response.data == b'Hello, World!'
